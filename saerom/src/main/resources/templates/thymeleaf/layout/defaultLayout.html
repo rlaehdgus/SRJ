@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="ko-KR">
+	<head>
+	    <!-- 공통 css, js, meta tag -->
+	    <th:block th:replace="thymeleaf/fragments/commonHead"></th:block>
+	</head>
+	<body>
+		<header th:replace="thymeleaf/fragments/commonHeader :: commonHeader"></header>
+	    <!-- page content body 구성 -->
+	    <th:block layout:fragment="content"></th:block>
+	    <!-- 공통 footer (메인페이지에서는 불러오지 않음)-->
+<!-- 	    <footer th:replace="(${#strings.equals(#httpServletRequest.requestURI, '/')} ? ~{} : ~{thymeleaf/fragments/commonFooter :: commonFooter})" ></footer> -->
+	</body>
+</html>

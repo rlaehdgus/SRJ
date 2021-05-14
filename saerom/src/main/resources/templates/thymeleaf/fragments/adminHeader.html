@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<header class="header black-bg" th:fragment="adminHeader">
+      <div class="sidebar-toggle-box">
+        <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+      </div>
+      <!--logo start-->
+      <a href="/admin" class="logo"><b>ADMIN</b></a>
+      <div class="top-menu">
+        <ul class="nav pull-right top-menu">
+        	<li><a target="_blank" class="logout" href="/" title="동원건설산업">Home</a></li>
+          <li><a class="logout" th:href="'/member/signOut?username=' + ${#authentication.name}">Logout</a></li>
+        </ul>
+      </div>
+	</header>
+</html>

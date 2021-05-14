@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<aside th:fragment="adminAside">
+		<div id="sidebar" class="nav-collapse">
+			<!-- sidebar menu start-->
+			<ul class="sidebar-menu" id="nav-accordion">
+				<li class="sub-menu">
+					<a href="/admin/member/modify" th:with="uri=${#httpServletRequest.requestURI}" th:class="${#strings.indexOf(uri, '/admin/member')} >= 0 ? 'active'">
+						<i class="fa fa-file-text-o" aria-hidden="true"></i>
+						<span>관리자</span>
+					</a>
+					<ul class="sub">
+						<li>
+							<a th:href="@{'/admin/member/modify'}">계정 관리</a>
+						</li>
+						<li>
+							<a th:href="@{'/admin/member/loginLog'}">접속 기록</a>
+						</li>
+						<li>
+							<a th:href="@{'/admin/member/activeLog'}">관리자 활동 기록</a>
+						</li>
+					</ul>
+				</li>
+				<li class="sub-menu">
+					<a href="/admin/question/list" th:with="uri=${#httpServletRequest.requestURI}" th:class="${#strings.indexOf(uri, '/admin/question')} >= 0 ? 'active'">
+						<i class="fa fa-file-text-o" aria-hidden="true"></i>
+						<span>문의사항 설정</span>
+					</a>
+					<ul class="sub">
+						<li>
+							<a th:href="@{'/admin/question/list'}">문의사항 관리</a>
+						</li>
+						<li>
+							<a th:href="@{'/admin/question/mail/list'}">문의사항 메일 관리</a>
+						</li>
+					</ul>
+				</li>
+				<li class="sub-menu">
+					<a href="/admin/business/list" th:with="uri=${#httpServletRequest.requestURI}" th:class="${#strings.indexOf(uri, '/admin/business')} >= 0 ? 'active'">
+						<i class="fa fa-file-text-o" aria-hidden="true"></i>
+						<span>사업분야</span>
+					</a>
+				</li>
+				<li class="sub-menu">
+					<a href="/admin/sale/list" th:with="uri=${#httpServletRequest.requestURI}" th:class="${#strings.indexOf(uri, '/admin/sale')} >= 0 ? 'active'">
+						<i class="fa fa-building" aria-hidden="true"></i>
+						<span>분양관리</span>
+					</a>
+				</li>
+				<li class="sub-menu">
+					<a href="/admin/board/list" th:with="uri=${#httpServletRequest.requestURI}" th:class="${#strings.indexOf(uri, '/admin/board')} >= 0 ? 'active'">
+						<i class="fa fa-list-ol" aria-hidden="true"></i>
+						<span>동원건설산업 소식</span>
+					</a>
+					<ul class="sub">
+						<li th:each="board, b:${adminBoardMenuList}">
+							<a th:href="@{'/admin/board/' + ${board.bcDbname} + '/config'}" th:text="${board.bcBoardName} + ' 게시판 설정' "></a>
+						</li>
+						<li th:each="board, b:${adminBoardMenuList}">
+							<a th:href="@{'/admin/board/' + ${board.bcDbname} + '/list'}" th:text="${board.bcBoardName} + ' 게시글 목록' "></a>
+						</li>
+					</ul>
+				</li>
+				<li class="sub-menu">
+					<a href="/admin/history/list" th:with="uri=${#httpServletRequest.requestURI}" th:class="${#strings.indexOf(uri, '/admin/history')} >= 0 ? 'active'">
+						<i class="fa fa-history" aria-hidden="true"></i>
+						<span>연혁</span>
+					</a>
+				</li>
+				<li class="sub-menu">
+					<a href="/admin/brochure/list" th:with="uri=${#httpServletRequest.requestURI}" th:class="${#strings.indexOf(uri, '/admin/brochure')} >= 0 ? 'active'">
+						<i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+						<span>기업 브로슈어</span>
+					</a>
+				</li>
+			</ul>
+        <!-- sidebar menu end-->
+		</div>
+	</aside>
+</html>

@@ -1,0 +1,25 @@
+server:
+  port: 8000
+  
+spring:
+#  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+#    username: 
+#    password: 
+
+# thymeleaf
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+    view-names: thymeleaf/*
+    
+# jsp
+  mvc:
+    view:
+      prefix: /WEB-INF/
+      suffix: .jsp
+      
+# static resource path setting
+    static-path-pattern: /static/**

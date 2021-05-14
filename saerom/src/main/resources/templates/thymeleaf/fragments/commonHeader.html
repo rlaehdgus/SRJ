@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<div th:fragment="commonHeader" th:remove="tag">
+	<!-- 웹접근성 / 메인 -->
+	<div th:remove="tag" th:if="${#strings.equals(#httpServletRequest.requestURI, '/')}">
+	<div class="skip_nav" >
+		<a class="skip_btn1" href="#gnb" title="주메뉴 바로가기">주메뉴 바로가기</a>
+		<a class="skip_btn2" href="#mainVisual" title="본문 바로가기">본문 바로가기</a>
+		<a class="skip_btn3" href="#Last" title="하단 바로가기">하단 바로가기</a>
+	</div>
+	<script>
+		$(".skip_btn1").on("click", function() {
+			$('#gnb').focus();
+		}); 
+		$(".skip_btn2").on("click", function() {  
+			$.fn.fullpage.moveTo(2,0);
+			$('.btn_down').focus();
+		});
+		$(".skip_btn3").on("click", function() {
+			var agent = navigator.userAgent.toLowerCase();
+			if ( (navigator.appName == 'Netscape' && navigator.userAgent.search('Trident') != -1) || (agent.indexOf("msie") != -1) ) {
+				location.href="#"
+			}	else {
+				location.href="#Last"
+			}
+			$.fn.fullpage.moveTo(6,0);
+			setTimeout(function(){ $('.ft-navigator li:first-child a').focus(); }, 1000);
+		});
+	</script>
+	</div>
+	<!-- 웹접근성 / 서브 -->
+	<div th:remove="tag" th:unless="${#strings.equals(#httpServletRequest.requestURI, '/')}">
+	<div class="skip_nav">
+		<a class="skip_btn1" href="#gnb" title="주메뉴 바로가기">주메뉴 바로가기</a>
+		<a class="skip_btn2" href="#sub" title="본문 바로가기">본문 바로가기</a>
+		<a class="skip_btn3" href="#Footer" title="하단 바로가기">하단 바로가기</a>
+	</div>
+	<script>
+		$(".skip_btn1").on("click", function() {
+			$('#gnb').focus();
+		}); 
+		$(".skip_btn2").on("click", function() {  
+			$('.sub_con').focus();
+		}); 
+		$(".skip_btn3").on("click", function() {
+			$('#Footer').focus();
+		});
+	</script>
+	 </div>
+	<!-- 서브만 적용 -->
+
+	<header class="header intro">
+	    <a href="/" class="logo" title="동원건설산업 메인 바로가기"></a>
+	    <ul class="nav">
+			<li><h2><a href="/company/greeting" title="회사소개 바로가기">회사소개</a></h2>
+	            <div class="depth-1 depth">
+	                <ul>
+	                    <li>
+	                      <h3><a href="/company/greeting" title="CEO 인사말 바로가기">CEO 인사말</a></h3>
+	                    </li>
+	                    <li>
+	                        <h3><a href="/company/overview" title="회사 개요 바로가기">회사 개요</a></h3>
+	                    </li>
+	                    <li>
+	                        <h3><a href="/company/history" title="연혁 바로가기">연혁</a></h3>
+	                    </li>
+	                    <li>
+	                      <h3><a href="/company/organization" title="조직 구성 바로가기">조직 구성</a></h3>
+	                    </li>
+	                    <li>
+	                        <h3><a href="/company/partner" title="그룹사 소개 바로가기">그룹사 소개</a></h3>
+	                    </li>
+	                    <li>
+	                        <h3><a href="/company/contact" title="찾아오시는 길 바로가기">찾아오시는 길</a></h3>
+	                    </li>
+	                </ul>
+	            </div>
+	        </li>
+	        <li><h2><a href="/business/architecture" title="사업분야 바로가기">사업분야</a></h2>
+	            <div class="depth-2 depth">
+	                <ul>
+	                  <li>
+	                      <h3><a href="/business/architecture" title="건축부문 바로가기">건축부문</a></h3>
+	                  </li>
+	                  <li>
+	                      <h3><a href="/business/infra" title="인프라부문 바로가기">인프라부문</a></h3>
+	                  </li>
+	                  <li>
+	                      <h3><a href="/business/realestate" title="부동산자산관리 바로가기">부동산자산관리</a></h3>
+	                  </li>
+	                  <li>
+	                      <h3><a href="/business/performance" title="연도별 실적 바로가기">연도별 실적</a></h3>
+	                  </li>
+	                </ul>
+	            </div>
+	        </li>
+	        <li><h2><a href="/management/vision" title="지속가능경영 바로가기">지속가능경영</a></h2>
+	            <div class="depth-3 depth">
+	                <ul>
+	                    <li>
+	                        <h3><a href="/management/vision" title="비전 바로가기">비전</a></h3>
+	                    </li>
+	                    <li>
+	                        <h3><a href="/management/ethics" title="윤리 &middot; 정도경영 바로가기">윤리 &middot; 정도경영</a></h3>
+	                    </li>
+	                    <li>
+	                        <h3><a href="/management/growup" title="동반성장 바로가기">동반성장</a></h3>
+	                    </li>
+	                </ul>
+	            </div>
+	        </li>
+	        <li><h2><a href="/board/news/list" title="홍보센터 바로가기">홍보센터</a></h2>
+	            <div class="depth-4 depth">
+	                <ul>
+	                <li>
+	                    <h3><a href="/board/news/list" title="동원건설 소식 바로가기">동원건설 소식</a></h3>
+	                </li>
+	                <li>
+	                    <h3><a href="/media/brand" title="브랜드 소개 바로가기">브랜드 소개</a></h3>
+	                </li>
+	            </ul>
+	            </div>
+	        </li>
+	        <li class="dep-none"><h2><a href="https://recruit.dongwon.com/" target="_blank" title="새 창열림">채용정보</a></h2></li>
+	        <li><h2><a href="/customer/faq" title="고객센터 바로가기">고객센터</a></h2>
+	            <div class="depth-5 depth">
+	                <ul>
+					  <li>
+						  <h3><a href="/customer/faq" title="FAQ 바로가기">FAQ</a></h3>
+					  </li>
+					  <li>
+						  <h3><a href="/customer/question/login" title="문의접수 바로가기">문의접수</a></h3>
+					  </li>
+					</ul>
+	            </div>
+	        </li> 
+	    </ul>
+	    <div class="hd_link">
+	        <a href="#none" class="notice_btn" title="공지사항 열기" th:text="'공지사항' + (${menuNoticeCount} != null ? '(' + ${menuNoticeCount} + ')' : '')"></a>
+	    </div>
+		<div class="hd_notice_pop">
+			<div class="hnp_list">
+				<h3 th:text="'공지사항' + (${menuNoticeCount} != null ? '(' + ${menuNoticeCount} + ')' : '')"></h3>
+				<ul>
+					<li th:if="${menuNotice} != null" th:each="notice, i:${menuNotice}">
+						<a th:href="'/board/news/view?boIdx=' + ${notice.boIdx}" th:title="${notice.boTitle}">
+							<div th:remove="tag" th:text="${notice.boTitle}"></div>
+							<img src="/static/images/ic_new.png" alt="신규공지사항" title="신규공지사항" th:if="${notice.boNewIcon} == '1'">
+							<span class="date" th:text="${#strings.substring(notice.boDisplayEnrolDt,0,10)}"></span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<button class="hnp_close sound_only"> 공지사항 닫기 </button>
+		</div>
+	    <a href="javascript:void(0)" class="btn-category" id="gnb" onclick="sitemapToggle();" title="사이트맵 열기">
+	        <span class="bar"></span>
+	        <span class="bar"></span>
+	        <span class="bar"></span>
+	    </a>
+	</header>
+	<div id="sitemap">
+	    <ul>
+	        <li><h2><a href="/company/greeting" title="회사소개 바로가기">회사소개</a></h2>
+	            <ul class="depth-1">
+	                <li>
+	                    <h3><a href="/company/greeting" title="CEO 인사말 바로가기">CEO 인사말</a></h3>
+	                </li>
+	                <li>
+	                    <h3><a href="/company/overview" title="회사 개요 바로가기">회사 개요</a></h3>
+	                </li>
+	                <li>
+	                    <h3><a href="/company/history" title="연혁 바로가기">연혁</a></h3>
+	                </li>
+	                <li>
+	                    <h3><a href="/company/organization" title="조직 구성 바로가기">조직 구성</a></h3>
+	                </li>
+	                <li>
+	                    <h3><a href="/company/partner" title="그룹사 소개 바로가기">그룹사 소개</a></h3>
+	                </li>
+	                <li>
+	                    <h3><a href="/company/contact" title="찾아오시는 길 바로가기">찾아오시는 길</a></h3>
+	                </li>
+	            </ul>
+	        </li>
+	        <li><h2><a href="/business/architecture" title="사업분야 바로가기">사업분야</a></h2>
+	            <ul class="depth-1">
+	                <li>
+	                    <h3><a href="/business/architecture" title="건축부문 바로가기">건축부문</a></h3>
+	                </li>
+	                <li>
+	                    <h3><a href="/business/infra" title="인프라 바로가기">인프라 부문</a></h3>
+	                </li>
+	                <li>
+	                    <h3><a href="/business/realestate" title="부동산자산관리 바로가기">부동산자산관리</a></h3>
+	                </li>
+	                <li>
+	                    <h3><a href="/business/performance" title="연도별 실적 바로가기">연도별 실적</a></h3>
+	                </li>
+	            </ul>
+	        </li>
+	        <li><h2><a href="/management/vision" title="지속가능경영 바로가기">지속가능경영</a></h2>
+	            <ul class="depth-1">
+	                <li>
+	                    <h3><a href="/management/vision" title="비전 바로가기">비전</a></h3>
+	                </li>
+	                <li>
+	                    <h3><a href="/management/ethics" title="윤리 &middot; 정도경영 바로가기">윤리 &middot; 정도경영</a></h3>
+	                </li>
+	                <li>
+	                    <h3><a href="/management/growup" title="동반 성장 바로가기">동반 성장</a></h3>
+	                </li>
+	            </ul>
+	        </li>
+	        <li><h2><a href="/board/news/list" title="홍보센터 바로가기">홍보센터</a></h2>
+	            <ul class="depth-1">
+	              <li>
+	                  <h3><a href="/board/news/list" title="동원건설 소식 바로가기">동원건설 소식</a></h3>
+	              </li>
+	              <li>
+	                  <h3><a href="/media/brand" title="브랜드 소개 바로가기">브랜드 소개</a></h3>
+	              </li>
+	            </ul>
+	        </li>
+	        <li class="dep-none"><h2><a href="https://recruit.dongwon.com/" target="_blank" title="새 창열림">채용정보</a></h2></li>
+	        <li><h2><a href="/customer/faq" title="고객센터 바로가기">고객센터</a></h2>
+	            <ul class="depth-1">
+	              <li>
+	                  <h3><a href="/customer/faq" title="FAQ 바로가기">FAQ</a></h3>
+	              </li>
+	              <li>
+	                  <h3><a href="/customer/question/login" title="문의접수 바로가기">문의접수</a></h3>
+	              </li>
+	            </ul>
+	        </li>
+	    </ul><!--nav-->
+	</div><!-- sitemap -->
+</div>
+</html>
